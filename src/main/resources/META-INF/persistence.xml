@@ -10,16 +10,19 @@
         <!-- Which implementation runs the spec -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <!-- Entities -->
+        <class>org.example.entity.User</class>
+
         <properties>
             <!-- Standard JPA properties: any implementation understands these -->
-            <property name="jakarta.persistence.jdbc.driver"   value="org.h2.Driver"/>
-            <property name="jakarta.persistence.jdbc.url"      value="jdbc:h2:mem:jpalab;DB_CLOSE_DELAY=-1"/>
-            <property name="jakarta.persistence.jdbc.user"     value="sa"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:jpalab;DB_CLOSE_DELAY=-1"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
 
             <!-- Hibernate-only properties: other implementations ignore these -->
-            <property name="hibernate.show_sql"   value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
