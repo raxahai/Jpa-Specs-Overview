@@ -9,22 +9,19 @@ import org.example.entity.User;
 import java.util.List;
 
 public class UserDao {
-    private final EntityManagerFactory emf;
+    private final EntityManager em;
 
-    public UserDao(EntityManagerFactory emf) {
-        this.emf = emf;
+    public UserDao(EntityManager em) {
+        this.em = em;
     }
 
     public User find(Long id) {
-        try (EntityManager em = emf.createEntityManager()) {
-            User user = em.find(User.class, id);
-            System.out.println("Found user: " + user);
-            return user;
-        }
+        User user = em.find(User.class, id);
+        System.out.println("Found user: " + user);
+        return user;
     }
 
     public void save(User u) {
-        EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             System.out.println("Transaction started");
@@ -37,8 +34,6 @@ public class UserDao {
             System.out.println("Transaction rollback");
             tx.rollback();
             throw e;
-        } finally {
-            em.close();
         }
     }
 }
